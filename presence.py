@@ -160,6 +160,7 @@ def validate(form: dict[str, str], require_client_id: bool = True) -> dict[str, 
 class PresencePayload:
     """Contenu immuable d'une activité Rich Presence."""
 
+    name: str = ""
     details: str = ""
     state: str = ""
     large_image: str = ""
@@ -174,7 +175,7 @@ class PresencePayload:
     def to_kwargs(self) -> dict[str, Any]:
         """Arguments pour ``Presence.update`` (les champs vides sont omis)."""
         kwargs: dict[str, Any] = {}
-        for name in ("details", "state", "large_image", "large_text", "small_image", "small_text"):
+        for name in ("name", "details", "state", "large_image", "large_text", "small_image", "small_text"):
             value: str = getattr(self, name)
             if value:
                 kwargs[name] = value
@@ -231,6 +232,7 @@ def build_payload(form: dict[str, str], resolver: TimerResolver) -> PresencePayl
     party = (int(cur), int(mx)) if cur and mx else None
     start, end = resolver.resolve(form["timer_mode"], form["timer_hhmm"])
     return PresencePayload(
+        name=form["app_name"].strip(),
         details=form["details"].strip(),
         state=form["state"].strip(),
         large_image=form["large_image"].strip(),

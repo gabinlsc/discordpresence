@@ -7,7 +7,7 @@ Elle utilise uniquement l'API officielle Rich Presence (Client ID d'une applicat
 
 ## 1. Créer ton application sur Discord (obligatoire, 5 min)
 
-Le nom de ton application sera le nom affiché après « Joue à ».
+Le nom de ton application sert de nom par défaut après « Joue à ». Tu peux le remplacer depuis l'appli (champ « Nom affiché après Joue à »).
 
 1. Va sur <https://discord.com/developers/applications> et connecte-toi.
 2. Clique sur **New Application** (en haut à droite), donne un nom (ex. « Mon Projet »), accepte les conditions, clique sur **Create**.
@@ -55,7 +55,7 @@ Ton exécutable est créé dans `dist\DiscordPresenceStudio.exe`. Tu peux le dé
 
 ## 4. Utiliser l'appli
 
-1. Onglet **Présence** : colle ton **Client ID**, puis remplis `Details` (ligne 1) et `State` (ligne 2). 2 caractères minimum, 128 maximum.
+1. Onglet **Présence** : colle ton **Client ID**, puis (optionnel) le nom à afficher après « Joue à » (vide = nom du portail), puis remplis `Details` (ligne 1) et `State` (ligne 2). 2 caractères minimum, 128 maximum.
 2. Onglet **Images** : saisis la **clé** de tes images (ex. `logo`) et le texte affiché au survol.
 3. Onglet **Boutons** : jusqu'à 2 boutons (libellé 32 caractères max + URL en `http://` ou `https://`).
 4. Onglet **Timer & groupe** :
@@ -87,7 +87,7 @@ En haut : tape un nom dans la liste puis **Enregistrer** pour sauvegarder tous l
 | Rien ne s'affiche sur mon profil | Vérifie l'étape 2 (partage d'activité, statut pas Invisible). Regarde bien ton profil, pas seulement la liste des membres. |
 | Mes boutons n'apparaissent pas | Normal : tu ne vois pas tes propres boutons, les autres si. |
 | L'image n'apparaît pas | Vérifie que la clé est exacte (sans extension) et attends quelques minutes après l'upload. |
-| Le nom après « Joue à » est faux | Il vient du nom de l'application dans le Developer Portal, pas de l'appli. Modifie-le là-bas. |
+| Le nom après « Joue à » n'est pas celui que j'ai saisi | Si Discord ignore le nom envoyé, il affiche celui du Developer Portal : modifie-le là-bas (General Information → Name). |
 | Une mise à jour met du temps | Limite Discord : 15 s entre deux mises à jour. |
 
 Fichiers de l'appli : `%APPDATA%\DiscordPresenceStudio\` (profils dans `profiles.json`, logs rotatifs dans `app.log`). Colle `%APPDATA%` dans la barre d'adresse de l'Explorateur pour y accéder.

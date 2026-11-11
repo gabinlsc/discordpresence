@@ -141,12 +141,12 @@ class App(ctk.CTk):
 
         t = tabs.tab("Présence")
         self._add_field(t, "Client ID (portail développeur)", "client_id", "ex. 123456789012345678")
-        self._add_field(t, "Nom de l'application (mémo, voir note)", "app_name", "Nom défini dans le portail")
+        self._add_field(t, "Nom affiché après « Joue à » (optionnel)", "app_name", "Vide = nom du portail")
         self._add_field(t, "Details (ligne 1)", "details", "ex. En train de coder")
         self._add_field(t, "State (ligne 2)", "state", "ex. Projet secret")
         ctk.CTkLabel(
             t,
-            text="Le nom affiché après « Joue à » est celui de l'application dans le portail.",
+            text="Si Discord ignore ce nom, c'est celui de l'application dans le portail qui s'affiche.",
             font=ctk.CTkFont(size=11),
             text_color="#9aa0a6",
             anchor="w",
