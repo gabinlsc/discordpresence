@@ -336,7 +336,7 @@ class PresenceWorker(threading.Thread):
                 if isinstance(command, Shutdown):
                     break
                 if command is not None:
-                    self._handle(command)
+                    self._dispatch(command)
                 self._tick()
         except Exception:  # filet de sécurité : ne jamais mourir silencieusement
             log.exception("Erreur fatale dans le worker")
@@ -349,7 +349,7 @@ class PresenceWorker(threading.Thread):
         self._events.put(StatusEvent(status, message, fatal))
 
     # -- Commandes ----------------------------------------------------------- #
-    def _handle(self, command: Command) -> None:
+    def _dispatch(self, command: Command) -> None:
         if isinstance(command, Connect):
             self._wanted = True
             self._payload = command.payload
